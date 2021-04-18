@@ -1,9 +1,15 @@
 import './assets/css/App.css';
 
+import TitleBar from './components/TitleBar';
+import FilterBar from './components/FilterBar';
+import ProductList from './components/ProductList';
+
 function App() {
   return (
     <div className="App">
-      Product List APP
+      <TitleBar />
+      <FilterBar />
+      <ProductList />
     </div>
   );
 }
