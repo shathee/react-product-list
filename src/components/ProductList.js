@@ -1,9 +1,13 @@
+import styled from 'styled-components';
+import Product from './Product';
+
+const ProductListDiv = styled.div``;
 
 function ProductList() {
     return (
-        <div>
-            ProductList
-        </div>
+        <ProductListDiv>
+            <Product/>
+        </ProductListDiv>
     );
 }
 
