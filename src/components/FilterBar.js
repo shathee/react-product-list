@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import filterImg from '../assets/images/filter.svg';
 
 const FilterBarDiv = styled.div`
     display: flex;
@@ -11,11 +12,13 @@ const FilterBarDiv = styled.div`
     & input{
         display: flex;
         align-items: center;
-        background: #FFFFFF;
+        background: url(${filterImg}) no-repeat 1% center #FFFFFF;
         border-radius: 4px;
         width:100%;
-        padding: 8px;
+        padding: 8px 10px 8px 40px;
         border:none;
+        font-size:16px;
+        margin: 0 8px;
     }
     & input:focus{
         border:1px solid #387DC2;
@@ -26,7 +29,7 @@ const FilterBarDiv = styled.div`
 function FilterBar() {
     return (
         <FilterBarDiv>
-            <input />
+            <input placeholder="Filter by name" />
         </FilterBarDiv>
     );
 }
