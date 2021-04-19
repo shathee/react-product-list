@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
-const ProductUl = styled.ul``;
+ 
+const ProductDiv = styled.div`
+   display:flex;
+   flex-flow:row;
+   padding: 5px;
+`;
 
-function Product() {
+function Product(props) {
     return (
-        <ProductUl>
-            <li>Product info</li>
-        </ProductUl>
+        <ProductDiv key={props.key} style={props.style} >
+            <div>{props.item.id}</div>
+            <div>{props.item.title}</div>
+        </ProductDiv>
     );
 }
 
