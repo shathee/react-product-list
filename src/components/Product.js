@@ -13,9 +13,11 @@ const ProductDiv = styled.div`
 
 function Product(props) {
     return (
-        <ProductDiv key={props.pkey} style={props.style} >
-            <div>{props.item.id}</div>
-            <div>{props.item.title}</div>
+        <ProductDiv key={props.item.id} style={props.style} >
+            <div>{props.item.ean_plu}</div>
+            <div>{props.item.name}</div>
+            <div>{props.item.producer}</div>
+            <div>{props.item.wt_vol_pce}</div>
         </ProductDiv>
     );
 }

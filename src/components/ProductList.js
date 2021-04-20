@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {setIntialProductList} from '../redux/actions'
 import Product from './Product';
+import ProductListHeader from './ProductListHeader';
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
@@ -14,10 +15,10 @@ const ProductListDiv = styled.div`
 `;
 
 function ProductList() {
-
+  const products = useSelector( (state) => state.products);
   const dispatch = useDispatch();
   const getProductsData = () => {
-    fetch("./data/product_groups.json")
+    fetch("./data/products.json")
     .then(response => response.json())
     .then( data => dispatch(setIntialProductList(data)))
     .catch(err => {
@@ -28,18 +29,14 @@ function ProductList() {
   useEffect(() => {
     getProductsData();
   }, [] );
-  
-  const data = new Array(1000).fill().map((value, id) => (({
-    id: id,
-    title: 'Title' + id
-  })))
-   
 
+  
   const Row = ({ index, style }) => (
-    <Product pkey={index} style={style} item={data[index]}/>
+    <Product style={style} item={products[index]}/>
   )
   return (
     <ProductListDiv>
+        <ProductListHeader/>
         <AutoSizer>
             {({ height, width }) => (
                 <List
