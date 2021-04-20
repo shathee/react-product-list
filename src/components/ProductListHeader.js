@@ -1,5 +1,6 @@
-
 import styled from 'styled-components';
+
+
  
 const ProductListHeaderDiv = styled.div`
    display:flex;
@@ -37,6 +38,9 @@ const ProductListHeaderDiv = styled.div`
 `;
 
 function ProductListHeader(props) {
+
+    
+
     return (
         <ProductListHeaderDiv>
             <div className="ean">EAN / PLU</div>

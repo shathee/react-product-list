@@ -1,28 +1,27 @@
 import { ActionTypes } from './actions';
 
 const defaultState = {
-    products: []
+    products: [],
+    shelfs:[],
+    product_groups: []
 };
 
 const productReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ActionTypes.SET_INTIAL_PRODUCTS:
             return {...state, products:action.payload};
-        case ActionTypes.ADD_TODO:
+        case ActionTypes.SET_PRODUCTS_SELFS:
             return { 
                 ...state,
-                products: state.products.concat(action.payload)
+                shelfs: action.payload
+            };
+        case ActionTypes.SET_PRODUCTS_GROUPS:
+            return { 
+                ...state,
+                product_groups: action.payload
             };
         case ActionTypes.FILTER_PRODUCTS:
-            const updatedproducts = state.products.map((product) =>
-            product.id === action.payload.id
-                ? {
-                    ...product,
-                    done: !product.done
-                }
-                : product
-            );
-            return {...state, products:updatedproducts};
+            console.log(action.payload)
         default:
             return state;
     }

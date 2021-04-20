@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import {setIntialProductList} from '../redux/actions'
+import {setIntialProductList, setProductShelfs, setProductGroups} from '../redux/actions'
 import Product from './Product';
 import ProductListHeader from './ProductListHeader';
 import { FixedSizeList as List } from "react-window";
@@ -19,24 +19,38 @@ function ProductList() {
   const products = useSelector( (state) => state.products);
   
   const dispatch = useDispatch();
-  const [dataloaded, setdataloaded] = useState(false);
+  const [prodactDataLoaded, setProdactDataLoaded] = useState(false);
+  const [shelfDataLoaded, setShelfDataLoaded] = useState(false);
+  const [groupDataLoaded, setGroupDataLoaded] = useState(false);
 
   useEffect(() => {
     async function getProductsData() {
       let response = await fetch('./data/products.json')
       response = await response.json()
       dispatch(setIntialProductList(response));
-      setdataloaded(true)
+      setProdactDataLoaded(true)
+    }
+    async function getShelfData() {
+      let response = await fetch('./data/shelfs.json')
+      response = await response.json()
+      dispatch(setProductShelfs(response));
+      setShelfDataLoaded(true)
+    }
+    async function getGroupData() {
+      let response = await fetch('./data/product_groups.json')
+      response = await response.json()
+      dispatch(setProductGroups(response));
+      setGroupDataLoaded(true)
     }
 
     getProductsData();
+    getShelfData();
+    getGroupData();
   }, [])
 
 
-
-
   let contents;
-  if (dataloaded) {
+  if (prodactDataLoaded & shelfDataLoaded & groupDataLoaded) {
     contents = <AutoSizer>
           {({ height, width }) => (
               <List
@@ -50,7 +64,7 @@ function ProductList() {
           )}
       </AutoSizer>
   }else{
-    contents = 'No data Loaded';
+    contents = 'Please Wait data is loading';
   }
   
   const Row = ({ index, style }) => (
