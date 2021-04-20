@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {setIntialProductList} from '../redux/actions'
@@ -15,40 +15,52 @@ const ProductListDiv = styled.div`
 `;
 
 function ProductList() {
+  
   const products = useSelector( (state) => state.products);
+  
   const dispatch = useDispatch();
-  const getProductsData = () => {
-    fetch("./data/products.json")
-    .then(response => response.json())
-    .then( data => dispatch(setIntialProductList(data)))
-    .catch(err => {
-      console.log(err);
-    });
-  }
+  const [dataloaded, setdataloaded] = useState(false);
 
   useEffect(() => {
-    getProductsData();
-  }, [] );
+    async function getProductsData() {
+      let response = await fetch('./data/products.json')
+      response = await response.json()
+      dispatch(setIntialProductList(response));
+      setdataloaded(true)
+    }
 
+    getProductsData();
+  }, [])
+
+
+
+
+  let contents;
+  if (dataloaded) {
+    contents = <AutoSizer>
+          {({ height, width }) => (
+              <List
+              width={width}
+              height={height}
+              itemCount={products.length}
+              itemSize={25}
+            >
+              {Row}
+            </List>
+          )}
+      </AutoSizer>
+  }else{
+    contents = 'No data Loaded';
+  }
   
   const Row = ({ index, style }) => (
-    <Product style={style} item={products[index]}/>
+    <Product style={style} item={ products[index] }/>
   )
+
   return (
     <ProductListDiv>
         <ProductListHeader/>
-        <AutoSizer>
-            {({ height, width }) => (
-                <List
-                width={width}
-                height={height}
-                itemCount={1000}
-                itemSize={25}
-              >
-                {Row}
-              </List>
-            )}
-        </AutoSizer>
+        {contents}
     </ProductListDiv>
   );
 }
