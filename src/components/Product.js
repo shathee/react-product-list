@@ -55,14 +55,14 @@ function Product(props) {
             <div className="shelf">
                 <select>
                 {shelfData.map( d =>
-                <option key={d.id} value={d.id}>{d.name}</option>
+                <option key={d.id} value={d.id} selected={ d.id === props.item.shelf_id } >{d.name}</option>
                 )};
                 </select>
             </div>
             <div className="p_group">
             <select>
                 {groupData.map( d =>
-                <option key={d.id} value={d.id}>{d.name}</option>
+                <option key={d.id} value={d.id} selected={d.id === props.item.product_group_id}>{d.name}</option>
                 )};
                 </select>
             </div>
