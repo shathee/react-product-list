@@ -42,7 +42,7 @@ function LoadingSpinner () {
             <Dot delay=".2s" />
             </DotWrapper>
             <h3>
-            Please wait while loading the datas
+            Please wait while loading the data
             </h3>
         </LoadingSpinnerDiv>
         
