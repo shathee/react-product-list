@@ -10,5 +10,5 @@ A React App to display list of products using React-Window. It also uses redux f
 `npm install`
 - to run in Development server
 `npm start`
-- or For Production Run
-`npm build`
+- to build for Production
+`npm run build`

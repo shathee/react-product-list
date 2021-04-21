@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {setIntialProductList, setProductShelfs, setProductGroups} from '../redux/actions'
 import Product from './Product';
+import LoadingSpinner from './LoadingSpinner';
 import ProductListHeader from './ProductListHeader';
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -64,7 +65,7 @@ function ProductList() {
           )}
       </AutoSizer>
   }else{
-    contents = 'Please Wait data is loading';
+    contents = <LoadingSpinner />;
   }
   
 
