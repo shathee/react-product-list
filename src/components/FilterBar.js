@@ -17,11 +17,11 @@ const FilterBarDiv = styled.div`
         align-items: center;
         background: url(${filterImg}) no-repeat 1% center #FFFFFF;
         border-radius: 4px;
-        width:100%;
+        width:95%;
         padding: 8px 10px 8px 40px;
         border:none;
         font-size:16px;
-        margin: 0 8px;
+        
     }
     & input:focus{
         border:1px solid #387DC2;

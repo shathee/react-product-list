@@ -5,7 +5,10 @@ import styled from 'styled-components';
 const ProductListHeaderDiv = styled.div`
    display:flex;
    flex-flow:row;
-   padding: 5px;
+   padding: 10px 0;
+   border-bottom: 1px solid #cecece;
+   width:97vw;
+
    
    & div{
     text-align:left;

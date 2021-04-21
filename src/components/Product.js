@@ -6,7 +6,10 @@ import { useSelector } from 'react-redux';
 const ProductDiv = styled.div`
    display:flex;
    flex-flow:row;
-   padding: 5px;
+   width:100%;
+   
+   border-bottom: 1px solid #cecece;
+   align-items: center;
    
    & div{
        text-align:left;
@@ -34,10 +37,11 @@ const ProductDiv = styled.div`
 
    & select {
       background: url(${dropdown}) no-repeat right center #FFFFFF;
-      width: 90%;
+      width: 85%;
       border: none;
       -webkit-appearance: none;
       -moz-appearance: none;
+      height:20px;
    }
 `;
 

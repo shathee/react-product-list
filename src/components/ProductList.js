@@ -7,11 +7,11 @@ import Product from './Product';
 import LoadingSpinner from './LoadingSpinner';
 import ProductListHeader from './ProductListHeader';
 import { FixedSizeList as List } from "react-window";
-import AutoSizer from "react-virtualized-auto-sizer";
 
 
 const ProductListDiv = styled.div`
-    height:80vh;
+    min-height:90vh;
+    width:90vw;
     padding: 10px;
 `;
 
@@ -50,29 +50,24 @@ function ProductList() {
   }, [])
 
 
-  let contents;
-  if (prodactDataLoaded & shelfDataLoaded & groupDataLoaded) {
-    contents = <AutoSizer>
-          {({ height, width }) => (
-              <List
-              width={width}
-              height={height}
-              itemCount={products.length}
-              itemSize={25}
-            >
-              {Row}
-            </List>
-          )}
-      </AutoSizer>
-  }else{
-    contents = <LoadingSpinner />;
-  }
-  
-
   const Row = ({ index, style }) => (
     <Product style={style} item={ products[index] }/>
   )
 
+  let contents;
+  if (prodactDataLoaded & shelfDataLoaded & groupDataLoaded) {
+    contents = <List
+              width={1340}
+              height={products.length}
+              itemCount={products.length}
+              itemSize={35}
+            >
+              {Row}
+            </List>
+  }else{
+    contents = <LoadingSpinner />;
+  }
+  
   return (
     <ProductListDiv>
         <ProductListHeader/>
