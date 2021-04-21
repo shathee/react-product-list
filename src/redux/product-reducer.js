@@ -2,6 +2,7 @@ import { ActionTypes } from './actions';
 
 const defaultState = {
     products: [],
+    visible_products: [],
     shelfs:[],
     product_groups: []
 };
@@ -9,7 +10,7 @@ const defaultState = {
 const productReducer = (state = defaultState, action) => {
     switch (action.type) {
         case ActionTypes.SET_INTIAL_PRODUCTS:
-            return {...state, products:action.payload};
+            return {...state, products:action.payload, visible_products: action.payload};
         case ActionTypes.SET_PRODUCTS_SELFS:
             return { 
                 ...state,
@@ -22,6 +23,14 @@ const productReducer = (state = defaultState, action) => {
             };
         case ActionTypes.FILTER_PRODUCTS:
             console.log(action.payload)
+            
+            const visibleProducts = action.payload 
+                ? state.products.filter((p) => p.name.toLowerCase().includes(action.payload.toLowerCase()))
+                : state.products;
+            return { 
+                ...state, 
+                visible_products: visibleProducts
+            };
         default:
             return state;
     }

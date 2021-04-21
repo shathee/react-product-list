@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import filterImg from '../assets/images/filter.svg';
+import { useDispatch } from 'react-redux';
+import { filterProductByName } from '../redux/actions'
+
 
 const FilterBarDiv = styled.div`
     display: flex;
@@ -27,9 +30,16 @@ const FilterBarDiv = styled.div`
 
 
 function FilterBar() {
+    const dispatch = useDispatch();
+    
+    const filterByName = (e) => {
+        const name = e.target.value;
+        dispatch(filterProductByName(name))
+    }
+
     return (
         <FilterBarDiv>
-            <input placeholder="Filter by name" />
+            <input placeholder="Filter by name" onChange={filterByName} />
         </FilterBarDiv>
     );
 }

@@ -16,7 +16,7 @@ const ProductListDiv = styled.div`
 
 function ProductList() {
   
-  const products = useSelector( (state) => state.products);
+  const products = useSelector( (state) => state.visible_products);
   
   const dispatch = useDispatch();
   const [prodactDataLoaded, setProdactDataLoaded] = useState(false);
@@ -67,6 +67,7 @@ function ProductList() {
     contents = 'Please Wait data is loading';
   }
   
+
   const Row = ({ index, style }) => (
     <Product style={style} item={ products[index] }/>
   )
