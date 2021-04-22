@@ -21,22 +21,22 @@ const ProductListHeaderDiv = styled.div`
     }
 
     & .ean {
-    width:10%
+    width:10%;
     }
     & .name {
-    width:20%
+    width:20%;
     }
     & .producer {
     width:20%
     }
     & .size {
-    width:10%
+    width:10%;
     }
     & .shelf {
     width:20%;
     }
     & .p_group {
-    width:20%
+    width:20%;
     }
 `;
 

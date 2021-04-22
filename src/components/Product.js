@@ -16,13 +16,13 @@ const ProductDiv = styled.div`
        font-size:12px;
    }
    & .ean {
-    width:10%
+    width:10%;
    }
    & .name {
-    width:20%
+    width:20%;
    }
    & .producer {
-    width:20%
+    width:20%;
    }
    & .size {
     width:10%

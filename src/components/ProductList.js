@@ -17,6 +17,7 @@ const ProductListDiv = styled.div`
     min-height:90vh;
     width:90vw;
     padding: 10px;
+    margin:0 auto;
 `;
 
 function ProductList() {
@@ -24,9 +25,12 @@ function ProductList() {
   const products = useSelector( (state) => state.visible_products);
   const dispatch = useDispatch();
   const [dataLoaded, setDataLoaded] = useState(false);
+  
   // const [prodactDataLoaded, setProdactDataLoaded] = useState(false);
   // const [shelfDataLoaded, setShelfDataLoaded] = useState(false);
   // const [groupDataLoaded, setGroupDataLoaded] = useState(false);
+
+  
 
   useEffect(() => {
     // async function getProductsData() {
@@ -51,11 +55,13 @@ function ProductList() {
     // getProductsData();
     // getShelfData();
     // getGroupData();
+    
     dispatch(setIntialProductList(productData));
     dispatch(setProductShelfs(shelfData));
     dispatch(setProductGroups(groupData));
-    setDataLoaded(true)
-
+    setDataLoaded(true);
+ 
+    
   }, [])
 
 
@@ -73,6 +79,7 @@ function ProductList() {
           height={height}
           itemCount={products.length}
           itemSize={35}
+          
         >
           {Row}
         </List> 
