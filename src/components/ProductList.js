@@ -26,35 +26,7 @@ function ProductList() {
   const dispatch = useDispatch();
   const [dataLoaded, setDataLoaded] = useState(false);
   
-  // const [prodactDataLoaded, setProdactDataLoaded] = useState(false);
-  // const [shelfDataLoaded, setShelfDataLoaded] = useState(false);
-  // const [groupDataLoaded, setGroupDataLoaded] = useState(false);
-
-  
-
   useEffect(() => {
-    // async function getProductsData() {
-    //   let response = await fetch('./data/products.json')
-    //   response = await response.json()
-    //   dispatch(setIntialProductList(response));
-    //   setProdactDataLoaded(true)
-    // }
-    // async function getShelfData() {
-    //   let response = await fetch('./data/shelfs.json')
-    //   response = await response.json()
-    //   dispatch(setProductShelfs(response));
-    //   setShelfDataLoaded(true)
-    // }
-    // async function getGroupData() {
-    //   let response = await fetch('./data/product_groups.json')
-    //   response = await response.json()
-    //   dispatch(setProductGroups(response));
-    //   setGroupDataLoaded(true)
-    // }
-
-    // getProductsData();
-    // getShelfData();
-    // getGroupData();
     
     dispatch(setIntialProductList(productData));
     dispatch(setProductShelfs(shelfData));
@@ -70,7 +42,6 @@ function ProductList() {
   )
 
   let contents;
-  // if (prodactDataLoaded & shelfDataLoaded & groupDataLoaded) {
   if (dataLoaded) {
     contents = <AutoSizer>
       {( {height, width}) => (
@@ -84,8 +55,7 @@ function ProductList() {
           {Row}
         </List> 
       )}
-            
-            </AutoSizer>
+      </AutoSizer>
   }else{
     contents = <LoadingSpinner />;
   }
