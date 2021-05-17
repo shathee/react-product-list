@@ -15,7 +15,7 @@ A React App to display list of products using React-Window. It also uses redux f
 
 ## Live Demo
 
-you can check the live demo [https://mighty-caverns-15257.herokuapp.com/](https://mighty-caverns-15257.herokuapp.com/) 
+you can check the live demo [https://mighty-caverns-15257.herokuapp.com/](https://mighty-caverns-15257.herokuapp.com/) or here [http://152.70.169.51/react-product-list/](http://152.70.169.51/react-product-list/)
 
 ## Screens
 
